@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { incNumber,decNumber } from "./actions/index";
 
-function App() {
+export default function App() {
+  const myState = useSelector((state) => state.changeTheNumber);
+  const dispatch = useDispatch();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      
+      <h2> React app with Redux state management</h2>
+      <button type="button" title="Decrement" className="btn btn-primary mr-3" onClick={ () => dispatch(incNumber())}>+</button>
+      <input name="quantity" type="text" className="clrs" value={myState} />
+      <button type="button" title="Increment" className="btn btn-primary mr-3"   onClick={ () => dispatch(decNumber())}>-</button>
+      
+    
+  
     </div>
   );
 }
 
-export default App;
+// npx create-react-app covid19tracker
+// npm start
